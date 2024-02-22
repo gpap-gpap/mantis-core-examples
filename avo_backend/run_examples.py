@@ -3,14 +3,10 @@ from typing import Callable
 import mantis_core._literature as mex
 import mantis_core.interface as MANint
 import mantis_core.utilities as MANut
-from rich.console import Console
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-# plt.style.use("..plottin.mantis_plotting")
-resolution: int = 128
-s0 = np.linspace(0.0, 0.35, resolution)
+resolution = 128
 labels = ["φ = 0", "φ = π/6", "φ = π/2", "φ = 2π/3"]
 
 
@@ -76,7 +72,7 @@ def plotting(
     # fig.set_figwidth(8)
     # ax.grid(visible=True)
     ax.set_title(title, fontsize=10)
-    ax.set_xlim(s0.min(), s0.max())
+    # ax.set_xlim(s0.min(), s0.max())
     ax.set_ylim(y_range[0], y_range[1])
     ax.set_xlabel("radial slowness (s/km)", fontsize=10)
     ax.set_ylabel("real part of reflection/transmission coefficient", fontsize=10)
@@ -85,3 +81,45 @@ def plotting(
         ax.plot(s0, dat[1], color=colours[dat[0]])
     ax.legend(labels)
     return plt.show()
+
+
+def generate_data(
+    paper: str, pairs: tuple[str, str], s_axis: np.ndarray, azimuth: float = 0.0
+):
+    # print(pairs)
+    top, bot = pairs
+    ref, descr = run_example(paper, medium1=top, medium2=bot)
+    data = np.array(
+        [
+            ref(radial_slowness * np.array([np.cos(azimuth), np.sin(azimuth)]))
+            for radial_slowness in s_axis
+        ]
+    )
+    return data
+
+
+def init_plot(
+    x: int,
+    y: int,
+    title: str,
+    xlabel: str = "slowness s/km",
+    ylabel: str = "real part of reflection/transmission coefficient",
+):
+    try:
+        fig, ax = plt.subplots(x, y, figsize=(12, 8))
+    except ValueError:
+        print("x and y must be integers")
+    if x > 1 or y > 1:
+        for i in range(x):
+            for j in range(y):
+                ax[i, j].set_xlabel(xlabel, fontsize=10)
+                ax[i, j].set_ylabel(ylabel, fontsize=10)
+    # ax.set_title(title, fontsize=10)
+    # ax.set_xlabel(xlabel, fontsize=10)
+    # ax.set_ylabel(ylabel, fontsize=10)
+    return fig, ax
+
+
+def close_plot(fig):
+    plt.show()
+    plt.close(fig)
