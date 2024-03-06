@@ -1,0 +1,9 @@
+{
+    "input_dir": "./wave_modelling_backend/test",
+    "fpeak": 5,
+    "parmsfile": "./wave_modelling_backend/small_model.json",
+    "wavetype": 0,
+    "wavetime": 0.09092,
+    "use_PML": 1,
+    "verbose": 1
+}

@@ -42,7 +42,7 @@ def plot_fluid_by_pressure(*, ax, fluid_name, temperature):
         ax[i].set_ylabel(fluid_properties[prop])
         manPResets.ReadPresets(fluid_name=fluid_name).data[prop].sel(
             Temperature=temperature, method="nearest"
-        ).plot(ax=ax[i], label=f"Temperature {temperature}C")
+        ).plot(ax=ax[i], label=f"{fluid_name} at {temperature}C")
         ax[i].set_title("")
 
 
@@ -59,7 +59,7 @@ def plot_fluid_by_temperature(*, ax, fluid_name, pressure):
         ax[i].set_ylabel(fluid_properties[prop])
         manPResets.ReadPresets(fluid_name=fluid_name).data[prop].sel(
             Pressure=pressure, method="nearest"
-        ).plot(ax=ax[i], label=f"Pressure {pressure}MPa")
+        ).plot(ax=ax[i], label=f"{fluid_name} at {pressure}MPa")
         ax[i].set_title("")
 
 

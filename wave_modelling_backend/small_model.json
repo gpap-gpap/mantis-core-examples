@@ -1,9 +1,9 @@
 {
     "nxtot": 201,
-    "nztot": 201,
+    "nztot": 101,
     "nxabs": 50,
     "nzabs": 50,
-    "dl": 5.0,
+    "dl": 10.0,
     "nt": 25001,
     "dt": 0.00005,
     "nsnap": 1,
@@ -11,15 +11,15 @@
     "dsnap": 1,
     "stype": 0,
     "nsource": 9,
-    "x_source": 0.0,
+    "x_source": 500.0,
     "z_source": 500,
     "start_rcvr": 0.0,
     "end_rcvr": 800.0,
-    "del_rcvr": 25.0,
+    "del_rcvr": 20.0,
     "rcvr_z": 500.0,
     "nvsp": 1,
     "vsp_x": [500.0],
     "vsp_sz": [550.0],
     "vsp_ez":[850.0],
-    "del_vsp":[25.0]
+    "del_vsp":[20.0]
 }
