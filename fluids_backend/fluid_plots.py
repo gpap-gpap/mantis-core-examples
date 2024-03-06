@@ -124,7 +124,7 @@ def fluid_mix_plot(ax, f: manFL.FluidMix, title: str = ""):
     for i, axis in enumerate(ax):
         for j, data in enumerate([data_uniform, data_intermediate, data_patchy]):
             axis.plot(data["saturation"], data[properties[i]])
-
+            axis.set_xlabel("Water Saturation")
         axis.set_ylabel(properties[i])
 
 
