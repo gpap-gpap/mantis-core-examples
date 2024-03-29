@@ -1,6 +1,6 @@
 {
     "input_dir": "./wave_modelling_backend/test",
-    "fpeak": 5,
+    "fpeak": 20,
     "parmsfile": "./wave_modelling_backend/small_model.json",
     "wavetype": 0,
     "wavetime": 0.09092,
