@@ -1,5 +1,5 @@
 {
-    "input_dir": "./wave_modelling_backend/test",
+    "input_dir": "./wave_modelling_backend/temp/isotropic",
     "fpeak": 20,
     "parmsfile": "./wave_modelling_backend/small_model.json",
     "wavetype": 0,
