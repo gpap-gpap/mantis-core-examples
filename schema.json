@@ -1,0 +1,247 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "Finite Difference Parameter File",
+    "type": "object",
+    "properties": {
+        "in_situ_model": {
+            "$ref": "#/$defs/in_situ_model"
+        },
+        "forward_model": {
+            "$ref": "#/$defs/forward_model"
+        },
+        "input_parameters": {
+            "$ref": "#/$defs/input_parameters"
+        },
+        "run_parameters": {
+            "$ref": "#/$defs/run_parameters"
+        }
+    },
+    "required": [
+        "in_situ_model",
+        "forward_model",
+        "input_parameters",
+        "run_parameters"
+    ],
+    "$defs": {
+        "in_situ_model": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Layer_Number": {
+                        "type": "integer",
+                        "description": "The layer number"
+                    },
+                    "Top_Depth": {
+                        "type": "number",
+                        "description": "The top depth of the layer"
+                    },
+                    "Vp": {
+                        "type": "number",
+                        "description": "The P-wave velocity of the layer"
+                    },
+                    "Vs": {
+                        "type": "number",
+                        "description": "The S-wave velocity of the layer"
+                    },
+                    "Rho": {
+                        "type": "number",
+                        "description": "The density of the layer"
+                    }
+                },
+                "required": [
+                    "Layer_Number",
+                    "Top_Depth",
+                    "Vp",
+                    "Vs",
+                    "Rho"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "forward_model": {
+            "type": "array",
+            "title": "The forward model",
+            "description": "The forward model derived from a well log",
+            "items": {
+                "Layer_Number": {
+                    "type": "integer",
+                    "description": "The layer number"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The forward model name"
+                },
+                "parameters": {
+                    "type": "object",
+                    "description": "The forward model parameters"
+                }
+            },
+            "required": [
+                "Layer_Number",
+                "model",
+                "parameters"
+            ],
+            "additionalProperties": false
+        },
+        "input_parameters": {
+            "type": "object",
+            "properties": {
+                "nxtot": {
+                    "type": "integer",
+                    "description": "total number of x grid points including nxabs"
+                },
+                "nztot": {
+                    "type": "integer",
+                    "description": "total number of z grid points including nzabs"
+                },
+                "nxabs": {
+                    "type": "integer",
+                    "description": "number of x  absorbing boundary points"
+                },
+                "nzabs": {
+                    "type": "integer",
+                    "description": "number of z  absorbing boundary points"
+                },
+                "dl": {
+                    "type": "number",
+                    "description": "grid increment in meter"
+                },
+                "nt": {
+                    "type": "integer",
+                    "description": "total number of time steps"
+                },
+                "dt": {
+                    "type": "number",
+                    "description": "time step increment in seconds"
+                },
+                "nsnap": {
+                    "type": "integer",
+                    "description": "number of snapshots for output"
+                },
+                "fsnap": {
+                    "type": "integer",
+                    "description": "time step of first snapshot output"
+                },
+                "dsnap": {
+                    "type": "integer",
+                    "description": "output snapshot every dsnap time steps"
+                },
+                "stype": {
+                    "type": "integer",
+                    "description": "0 - P source traction source; 1 - X velocity source; 2 - Z velocity source"
+                },
+                "nsource": {
+                    "type": "integer",
+                    "description": "number of sources: 1 - point source; 9 - Gaussian array"
+                },
+                "x_source": {
+                    "type": "number",
+                    "description": "array of source x grid locations (0 at left, meters)"
+                },
+                "z_source": {
+                    "type": "number",
+                    "description": "array of source z grid locations (0 at top, meters)"
+                },
+                "start_rcvr": {
+                    "type": "number",
+                    "description": "horizontal receiver array: start x coordinate in meters from left of model"
+                },
+                "end_rcvr": {
+                    "type": "number",
+                    "description": "horizontal receiver array: end x coordinate in meters from left of model"
+                },
+                "del_rcvr": {
+                    "type": "number",
+                    "description": "horizontal receiver array spacing in meters"
+                },
+                "rcvr_z": {
+                    "type": "number",
+                    "description": "horizontal receiver array: depth in m below top of model"
+                },
+                "nvsp": {
+                    "type": "integer",
+                    "description": "number of vertical VSP arrays"
+                },
+                "vsp_x": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "VSP x coordinate in meters from left of model"
+                },
+                "vsp_sz": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "VSP start depth in m below top of model"
+                },
+                "vsp_ez": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "VSP end depth in m below top of model"
+                },
+                "del_vsp": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "VSP depth spacing in m"
+                }
+            },
+            "required": [
+                "nxtot",
+                "nztot",
+                "nxabs",
+                "nzabs",
+                "dl",
+                "nt",
+                "dt",
+                "nsnap",
+                "fsnap",
+                "dsnap",
+                "stype",
+                "nsource",
+                "x_source",
+                "z_source",
+                "start_rcvr",
+                "end_rcvr",
+                "del_rcvr",
+                "rcvr_z",
+                "nvsp",
+                "vsp_x",
+                "vsp_sz",
+                "vsp_ez",
+                "del_vsp"
+            ],
+            "additionalProperties": false
+        },
+        "run_parameters": {
+            "type": "object",
+            "properties": {
+                "fpeak": {
+                    "type": "number",
+                    "description": "peak frequency of the source wavelet"
+                },
+                "wavetype": {
+                    "type": "integer",
+                    "description": "0 for Ricker wavelet; 1 for AKB wavelet; 2 for MIT style Ricker wavelet"
+                },
+                "wavetime": {
+                    "type": "number",
+                    "description": "time length in seconds of applied wavelet"
+                }
+            }
+        },
+        "required": [
+            "fpeak",
+            "wavetype",
+            "wavetime"
+        ],
+        "additionalProperties": false
+    }
+}

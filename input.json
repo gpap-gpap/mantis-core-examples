@@ -1,0 +1,86 @@
+{
+    "input_parameters": {
+        "nxtot": 201,
+        "nztot": 201,
+        "nxabs": 50,
+        "nzabs": 50,
+        "dl": 5.0,
+        "nt": 15001,
+        "dt": 0.00005,
+        "nsnap": 1,
+        "fsnap": 5000,
+        "dsnap": 1,
+        "stype": 0,
+        "nsource": 9,
+        "x_source": 500.0,
+        "z_source": 500,
+        "start_rcvr": 0.0,
+        "end_rcvr": 800.0,
+        "del_rcvr": 20.0,
+        "rcvr_z": 500.0,
+        "nvsp": 1,
+        "vsp_x": [
+            500.0
+        ],
+        "vsp_sz": [
+            550.0
+        ],
+        "vsp_ez": [
+            850.0
+        ],
+        "del_vsp": [
+            20.0
+        ]
+    },
+    "run_parameters": {
+        "fpeak": 20,
+        "wavetype": 0,
+        "wavetime": 0.09092
+    },
+    "in_situ_model": [
+        {
+            "Layer_Number": 0,
+            "Top_Depth": 0.0,
+            "Vp": 2.82,
+            "Vs": 1.25,
+            "Rho": 2.35
+        },
+        {
+            "Layer_Number": 1,
+            "Top_Depth": 100.0,
+            "Vp": 3.55,
+            "Vs": 1.47,
+            "Rho": 2.45
+        },
+        {
+            "Layer_Number": 2,
+            "Top_Depth": 300.0,
+            "Vp": 2.94,
+            "Vs": 1.36,
+            "Rho": 2.37
+        }
+    ],
+    "forward_model": [
+        {
+            "model": "generic",
+            "parameters": {},
+            "Layer_Number": 0
+        },
+        {
+            "model": "sls",
+            "parameters": {
+                "Q_sls": 8,
+                "Log_omega_ref": 0.0
+            },
+            "Layer_Number": 1
+        },
+        {
+            "model": "sls",
+            "parameters": {
+                "Q_sls": 20,
+                "Log_omega_ref": 0.0
+            },
+            "Layer_Number": 2
+        }
+    ]
+}

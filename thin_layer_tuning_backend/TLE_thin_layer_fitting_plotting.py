@@ -310,16 +310,34 @@ class ThinLayerModels:
                 temp.fluid.saturation = saturation
             except AttributeError:
                 pass
-            Z1 = self.reim(
-                np.sqrt(
-                    temp.Cij(
-                        omega=np.log10(self.wave_simulator.wavelet.central_frequency)
-                    )[0, 0]
-                    * rho1()
-                )
+            # Z1 = self.reim(
+            #     np.sqrt(
+            #         temp.Cij(
+            #             omega=np.log10(self.wave_simulator.wavelet.central_frequency)
+            #         )[0, 0]
+            #         * rho1()
+            #     )
+            # )
+            temp2 = np.zeros(
+                (len(self.wave_simulator.wave_modeller.freq_axis)), dtype=complex
             )
-            r1 = ni_RC(Z0, Z1)
-            r2 = ni_RC(Z1, Z2)
+            for i, f in enumerate(self.wave_simulator.wave_modeller.freq_axis):
+                temp2[i] = self.reim(
+                    np.sqrt(temp.Cij(omega=np.log10(f))[0, 0] * rho1())
+                )
+            # Z1 = self.reim(
+            #     np.sqrt(
+            #         temp.Cij(
+            #             omega=np.log10(self.wave_simulator.wavelet.central_frequency)
+            #         )[0, 0]
+            #         * rho1()
+            #     )
+            # )
+            Z1 = temp2
+            # r1 = ni_RC(Z0, Z1)
+            # r2 = ni_RC(Z1, Z2)
+            r1 = np.array([ni_RC(Z0, Z) for Z in Z1])
+            r2 = np.array([ni_RC(Z, Z2) for Z in Z1])
 
             w1 = self.wave_simulator.convolve_freq_domain(spectrum=r1 * wlet)
             w2 = self.wave_simulator.convolve_freq_domain(spectrum=r2 * wlet)

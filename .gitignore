@@ -13,6 +13,7 @@ env/
 build/
 Temp/
 temp/
+tmp/
 lambda-layer/
 develop-eggs/
 dist/
@@ -31,6 +32,7 @@ snapshots/
 traces/
 Wavelet/
 Example_6_Inversion.ipynb
+scratch.ipynb
 test/
 # PyInstaller
 #  Usually these files are written by a python script from a template
