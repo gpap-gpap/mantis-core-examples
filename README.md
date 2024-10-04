@@ -1,7 +1,5 @@
 # <font color='#30a54f'>**mantis**</font>  <font color='black'>**geophysics**</font>
 
-An Edinburgh University spinout - contact: <contact@mantis-geophysics.com>
-
 ### Author: G. Papageorgiou
 
 Demo notebooks for the mantis codebase - for a web app that allows you to run mantis models in your browser [get in touch](mantis-geophysics.com/)
