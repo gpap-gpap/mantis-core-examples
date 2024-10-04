@@ -6,7 +6,7 @@ from matplotlib.collections import LineCollection
 from typing import Tuple
 
 
-plt.style.use("plotting.mantis_plotting")
+# plt.style.use("plotting.mantis_plotting")
 
 
 def load_data_to_initial_model(file="input.csv"):
